@@ -59,6 +59,7 @@ describe 'User' do
       visit '/'
       expect(page).to have_content("Name: #{promise.name}")
       expect(page).to have_content("Person: #{promise.person}")
+      expect(page).to have_content("Status: in progress")
 
       click_on 'Edit'
       expect(current_path).to eq("/promises/#{promise.id}/edit")
@@ -66,10 +67,13 @@ describe 'User' do
 
       fill_in :name, with: "A different promise name"
       fill_in :person, with: "Anybody"
+      select "abandoned", from: :promise_status
       click_on "Update Promise"
       expect(current_path).to eq('/')
       expect(page).to have_content("Name: A different promise name")
       expect(page).to have_content("Person: Anybody")
+      expect(page).to have_content("Status: abandoned")
+
       expect(page).to_not have_content("Name: #{promise.name}")
       expect(page).to_not have_content("Person: #{promise.person}")
     end

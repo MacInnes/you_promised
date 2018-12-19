@@ -21,6 +21,7 @@ class PromisesController < ApplicationController
     promise.update(
       name: params[:promise][:name],
       person: params[:promise][:person],
+      status: params[:promise][:status]
     )
     redirect_to '/'
   end
