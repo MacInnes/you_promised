@@ -23,6 +23,19 @@ describe 'User' do
       expect(page).to have_content('Person: Roger')
     end
 
+    it 'Can view an individual promise' do
+      promise = Promise.create(
+        name: "test promise",
+        person: "God"
+      )
+      visit '/'
+
+      click_on "#{promise.name}"
+      expect(current_path).to eq("/promises/#{promise.id}")
+      expect(page).to have_content("Name: #{promise.name}")
+      expect(page).to have_content("Person: #{promise.person}")
+    end
+
     it 'Can delete a promise' do
       promise = Promise.create(
         name: "test promise",

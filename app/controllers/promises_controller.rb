@@ -12,6 +12,10 @@ class PromisesController < ApplicationController
     @promise = Promise.find(params[:id])
   end
 
+  def show
+    @promise = Promise.find(params[:id])
+  end
+
   def update
     promise = Promise.find(params[:id])
     promise.update(
