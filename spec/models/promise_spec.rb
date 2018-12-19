@@ -12,6 +12,7 @@ describe Promise do
 
   it { should validate_presence_of :name}
   it { should validate_presence_of :person}
+  it { should validate_presence_of :status}
 
 
 end

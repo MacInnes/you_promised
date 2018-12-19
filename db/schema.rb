@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_12_19_172225) do
   create_table "promises", force: :cascade do |t|
     t.string "person"
     t.string "name"
+    t.string "status", default: "in progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
