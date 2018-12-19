@@ -21,7 +21,21 @@ describe 'User' do
       expect(current_path).to eq('/')
       expect(page).to have_content('Name: Fix my car')
       expect(page).to have_content('Person: Roger')
+    end
 
+    it 'Can delete a promise' do
+      promise = Promise.create(
+        name: "test promise",
+        person: "God"
+      )
+      visit '/'
+      expect(page).to have_content("Name: #{promise.name}")
+      expect(page).to have_content("Person: #{promise.person}")
+
+      click_on 'Delete'
+      expect(current_path).to eq('/')
+      expect(page).to_not have_content("Name: #{promise.name}")
+      expect(page).to_not have_content("Person: #{promise.person}")
     end
 
   end

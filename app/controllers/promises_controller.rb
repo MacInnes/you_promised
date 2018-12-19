@@ -8,4 +8,8 @@ class PromisesController < ApplicationController
     redirect_to '/'
   end
 
+  def destroy
+    Promise.find(params[:id]).destroy
+    redirect_to '/'
+  end
 end
