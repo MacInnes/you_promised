@@ -1,0 +1,17 @@
+<h4>Add a promise:</h4>
+
+<%= form_for @promise do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, id: "name"%>
+  <%= f.label :person %>
+  <%= f.text_field :person, id: "person" %>
+  <%= f.submit %>
+<% end %>
+
+<h4>Current promises:</h4>
+<% @promises.each do |promise| %>
+  <div class="promise">
+    <p>Name: <%= promise.name %></p>
+    <p>Person: <%= promise.person %></p>
+  </div>
+<% end %>
