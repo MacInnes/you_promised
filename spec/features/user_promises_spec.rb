@@ -38,6 +38,29 @@ describe 'User' do
       expect(page).to_not have_content("Person: #{promise.person}")
     end
 
+    it 'Can edit a promise' do
+      promise = Promise.create(
+        name: "test promise",
+        person: "God"
+      )
+      visit '/'
+      expect(page).to have_content("Name: #{promise.name}")
+      expect(page).to have_content("Person: #{promise.person}")
+
+      click_on 'Edit'
+      expect(current_path).to eq("/promises/#{promise.id}/edit")
+      expect(page).to have_content("Edit this promise:")
+
+      fill_in :name, with: "A different promise name"
+      fill_in :person, with: "Anybody"
+      click_on "Update Promise"
+      expect(current_path).to eq('/')
+      expect(page).to have_content("Name: A different promise name")
+      expect(page).to have_content("Person: Anybody")
+      expect(page).to_not have_content("Name: #{promise.name}")
+      expect(page).to_not have_content("Person: #{promise.person}")
+    end
+
   end
 
 end

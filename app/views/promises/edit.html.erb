@@ -1,0 +1,9 @@
+<h4>Edit this promise:</h4>
+
+<%= form_for @promise, method: :put do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, id: "name"%>
+  <%= f.label :person %>
+  <%= f.text_field :person, id: "person" %>
+  <%= f.submit %>
+<% end %>
