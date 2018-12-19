@@ -1,0 +1,7 @@
+<div class="promise">
+  <p><%= link_to "Name: #{@promise.name}", "/promises/#{@promise.id}" %></p>
+  <p>Person: <%= @promise.person %></p>
+  <p>Status: <%= @promise.status %></p>
+  <a href="/promises/<%= @promise.id %>/edit">Edit</a>
+  <%= link_to "Delete", "/promises/#{@promise.id}", method: 'delete' %>
+</div>
